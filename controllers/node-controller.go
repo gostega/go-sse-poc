@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"go-sse-poc/events"
 	"log"
 	"net/http"
 
@@ -16,6 +17,8 @@ func UpdateNode(c echo.Context) error {
 	log.Print("Fake updating a node to test SSE publishing")
 
 	// publish something here
+	m := events.NewMessage("hi", "topic")
+	_ = events.GetSseServer().Publish(m)
 
 	return c.String(http.StatusOK, "published a message, did you get it?\n")
 }
