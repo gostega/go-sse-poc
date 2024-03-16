@@ -1,3 +1,5 @@
+module go-sse-poc
+
 go 1.22.0
 
 require (
